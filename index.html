@@ -3,425 +3,385 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ganesh talluri — terminal</title>
-<meta name="description" content="Text-first, terminal-flavored portfolio of Ganesh Talluri — founder & computational biology researcher.">
-<meta property="og:title" content="ganesh talluri — terminal">
-<meta property="og:description" content="Text-first, terminal-flavored portfolio of Ganesh Talluri — founder & computational biology researcher.">
-<meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Ganesh Talluri — Portfolio</title>
+<meta name="description" content="Founder & Computational Biology Researcher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#0b0c0e; --fg:#e9eaee; --muted:#9aa0a6; --dim:#7b8087;
-  --accent:#7c9cff; --accent-2:#a8b4ff; --ok:#22d3a6;
-  --border:rgba(255,255,255,.12); --hair:rgba(255,255,255,.1); --panel:rgba(255,255,255,.04);
-  --link:#aab8ff; --link-hover:#c7d2fe;
-  --dur:220ms; --ease:cubic-bezier(.22,.61,.36,1);
-  --wrap:860px;
-}
-.theme-light{
-  --bg:#f6f7fb; --fg:#101216; --muted:#5f6670; --dim:#7a818b;
-  --accent:#3b5bdb; --accent-2:#5368ff; --ok:#12b886;
-  --border:#e3e7f0; --hair:#eceff6; --panel:#fff; --link:#2b3db8; --link-hover:#1f2a8a;
-}
-.theme-matrix{
-  --bg:#000; --fg:#c7ffd8; --muted:#79e6b0; --dim:#4cbf8e;
-  --accent:#00ff95; --accent-2:#66ffc0; --ok:#00ff95;
-  --border:#0c754f; --hair:#074b34; --panel:#02160e; --link:#66ffc0; --link-hover:#a6ffdd;
+:root {
+    /* --- Color Tokens --- */
+    --bg: #050505;
+    --panel: #0a0a0a;
+    --border: #1f1f1f;
+    --text-pri: #ededed;
+    --text-sec: #888888;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.1);
+    
+    /* --- Sizing --- */
+    --max-w: 1000px;
+    --radius: 8px;
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
 }
 
-/* Base */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} :root{--dur:0ms}}
-body{
-  margin:0; background:var(--bg); color:var(--fg);
-  font:16px/1.75 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; font-variant-ligatures:none;
-}
-::selection{background:color-mix(in oklab, var(--accent) 28%, transparent)}
-a{color:var(--link); text-decoration:none; border-bottom:1px dashed transparent; transition:border-color var(--dur) var(--ease)}
-a:hover{border-bottom-color:var(--link-hover)}
-a:visited{color:var(--link)} /* never purple */
-
-/* limit “↗” to text links; never on icons/chips/nav */
-a[target="_blank"]::after{content:" ↗"; opacity:.85}
-.iconbtn[target="_blank"]::after,
-.nav a[target="_blank"]::after,
-.chip[target="_blank"]::after{content:none}
-
-.wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
-.container{max-width:var(--wrap); margin:28px auto 120px; padding:0 24px}
-
-/* Progress */
-.progress{position:fixed; inset:0 0 auto 0; height:2px; z-index:100; background:transparent}
-.progress>i{display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transform-origin:0 0; transform:scaleX(0)}
-
-/* Header */
-.header{
-  position:sticky; top:0; z-index:10;
-  backdrop-filter:saturate(140%) blur(8px);
-  background:linear-gradient(180deg, color-mix(in oklab, var(--bg) 90%, transparent), color-mix(in oklab, var(--bg) 94%, transparent));
-  border-bottom:1px solid var(--hair);
-}
-.header .wrap{display:flex; flex-direction:column; gap:10px; padding:14px 0 10px}
-
-/* Mast row */
-.mast{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:18px; min-height:46px}
-.brand{display:flex; align-items:center; gap:10px; font-weight:600; white-space:nowrap; letter-spacing:.2px}
-.brand .dot{
-  width:10px; height:10px; border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#35f7c6,var(--ok) 70%);
-  box-shadow:0 0 10px var(--ok),0 0 24px color-mix(in oklab, var(--ok) 40%, transparent);
-  animation:breath 3.2s ease-in-out infinite;
-}
-@keyframes breath{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-@media (prefers-reduced-motion:reduce){.brand .dot{animation:none}}
-.mast-spacer{min-width:8px}
-
-/* Icon buttons — normalized boxes, no arrows */
-.right{display:flex; gap:8px; align-items:center}
-.iconbtn{
-  display:inline-grid; place-items:center;
-  width:38px; height:38px; border-radius:12px;
-  border:1px solid var(--border); background:var(--panel); color:var(--fg); cursor:pointer;
-  transition:color .12s, background .12s, border-color .12s, transform .12s;
-}
-.iconbtn:hover{color:var(--accent); background:rgba(255,255,255,.03); border-color:var(--accent); transform:translateY(-1px)}
-.iconbtn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
-.iconbtn svg{width:18px; height:18px; display:block}
-
-/* Nav row — compact, cohesive chips + underline */
-.nav-row{display:flex; align-items:center}
-.nav{position:relative; display:flex; flex-wrap:wrap; gap:10px}
-.nav a{
-  padding:6px 12px; border-radius:999px; color:var(--muted);
-  border:1px solid var(--border); background:var(--panel);
-  font-weight:500; letter-spacing:.015em;
-  transition:color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease)
-}
-.nav a:hover{border-color:var(--accent); color:var(--fg)}
-.nav a[aria-current="page"]{color:var(--fg); border-color:color-mix(in oklab, var(--accent) 38%, var(--border)); background:color-mix(in oklab, var(--panel) 70%, var(--accent) 8%)}
-.indicator{
-  position:absolute; height:2px; background:var(--accent);
-  left:0; top:calc(100% + 6px); width:var(--u-w,0px); transform:translateX(var(--u-x,0px));
-  border-radius:2px; transition:transform var(--dur) var(--ease), width var(--dur) var(--ease)
+/* --- Base --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    background-color: var(--bg);
+    color: var(--text-pri);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Breadcrumb */
-.breadcrumb{
-  margin:16px 0 18px; color:var(--muted); font-size:12.5px;
-  border:1px dashed var(--hair); border-radius:8px; padding:7px 12px;
-  display:flex; align-items:center; justify-content:space-between; gap:12px
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+ul { list-style: none; }
+
+/* --- Layout --- */
+.wrapper {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    min-height: 100vh;
 }
-.path{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.copy{position:relative; border:1px solid var(--border); background:var(--panel); color:var(--fg); border-radius:8px; padding:4px 10px; cursor:pointer; font-size:12.5px}
-.copy:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
-.copy.tip::after{
-  content:"copied"; position:absolute; top:-30px; right:0; background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:2px 6px;
-  color:var(--fg); font-size:12px; opacity:0; transform:translateY(4px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease)
+
+/* --- Sidebar --- */
+.sidebar {
+    padding: 80px 0;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.copy.tip.show::after{opacity:1; transform:translateY(0)}
 
-/* Type & content */
-h1{font-size:28px; line-height:1.3; margin:18px 0 6px}
-h2{font-size:20px; line-height:1.4; margin:40px 0 8px; color:var(--muted); letter-spacing:.06em; text-transform:uppercase}
-h3{font-size:16px; line-height:1.5; margin:14px 0 6px; font-weight:600}
-.small{color:var(--dim); font-size:12.8px}
-
-.section{padding:6px 0}
-.items{margin-top:8px}
-.entry{padding:14px 0; border-top:1px solid var(--hair)}
-.entry:first-child{border-top:0; padding-top:0}
-.ul{list-style:none; margin:0; padding-left:18px}
-.ul li{margin:2px 0; position:relative}
-.ul li::before{content:"– "; position:absolute; left:-18px; color:var(--muted)}
-.inline{white-space:nowrap}
-
-/* Contact list (refined) */
-.contact-list{display:grid; gap:10px; margin-top:8px}
-.contact-row{
-  display:grid; grid-template-columns:120px 1fr auto; align-items:baseline;
-  padding:10px 0; border-top:1px solid var(--hair);
+.identity h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+    color: var(--text-pri);
 }
-.contact-row:first-child{border-top:0; padding-top:0}
-.contact-row dt{color:var(--muted); text-transform:uppercase; letter-spacing:.06em; font-size:12.5px}
-.contact-row dd{margin:0; position:relative}
-.contact-link{display:inline-block; padding:2px 0; transition:transform .14s var(--ease), text-shadow .14s var(--ease)}
-.contact-link:hover{transform:translateY(-1px)}
-.contact-link::after{
-  content:"✶"; font-size:10px; margin-left:6px; opacity:0; transform:translateY(-2px) scale(.6); display:inline-block;
-  transition:opacity .18s var(--ease), transform .18s var(--ease); color:var(--accent-2)
+
+.identity h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-sec);
+    margin-bottom: 24px;
 }
-.contact-link:hover::after{opacity:1; transform:translateY(-6px) scale(1)}
-.copy.mini{padding:3px 8px; font-size:12px; border-radius:7px}
 
-/* Tiny toyish bits */
-@keyframes boop{0%{transform:translateY(0) rotate(0)}40%{transform:translateY(-1px) rotate(-1.5deg)}70%{transform:translateY(0) rotate(1.2deg)}100%{transform:translateY(0) rotate(0)}}
-.nav a:hover{animation:boop .28s ease-out}
-@media (prefers-reduced-motion:reduce){.nav a:hover{animation:none}}
+.bio {
+    font-size: 15px;
+    color: var(--text-sec);
+    margin-bottom: 40px;
+    line-height: 1.7;
+    max-width: 260px;
+}
 
-.reveal{opacity:0; transform:translateY(4px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease)}
-.reveal.in{opacity:1; transform:translateY(0)}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none}}
+.nav-links { display: flex; flex-direction: column; gap: 14px; }
+.nav-item {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-sec);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 12px;
+}
+.nav-item:hover, .nav-item.active { color: var(--text-pri); }
+.nav-line {
+    width: 20px; height: 1px; background: var(--border);
+    transition: 0.3s;
+}
+.nav-item:hover .nav-line, .nav-item.active .nav-line {
+    width: 40px; background: var(--text-pri);
+}
 
-.anchor{scroll-margin-top:124px}
-.footer{margin-top:48px; color:var(--muted); font-size:12.5px; text-align:center; border-top:1px solid var(--hair); padding-top:12px}
+.socials { display: flex; gap: 20px; }
+.social-icon { color: var(--text-sec); transition: 0.2s; }
+.social-icon:hover { color: var(--text-pri); transform: translateY(-2px); }
 
-/* Print */
-@media print{
-  .header,.breadcrumb,.progress,.right,.indicator{display:none!important}
-  .container{margin:0; padding:0}
-  a[href^="http"]::after{content:" (" attr(href) ")"; color:var(--dim)}
-  a[href^="mailto:"]::after{content:" (" attr(href) ")"; color:var(--dim)}
+/* --- Content Area --- */
+.content-area {
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* --- Card Design Fixes --- */
+.card {
+    position: relative;
+    padding: 0; /* Reset padding to handle internal spacing */
+    margin-bottom: 32px;
+    transition: transform 0.2s;
+    /* Invisible border initially */
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: var(--border);
+}
+
+/* Grid Layout for Date vs Content */
+.card-content {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* Fixed width for date, rest for content */
+    gap: 24px;
+    padding: 16px;
+}
+
+/* THE FIX: Ensure date does not stretch or have background */
+.card-date {
+    font-family: var(--font-code);
+    font-size: 12px;
+    color: var(--text-sec);
+    opacity: 0.7;
+    padding-top: 2px; /* Optical alignment with title */
+    
+    /* Prevents the "blue bar" stretching issue */
+    background: transparent !important; 
+    height: fit-content;
+    white-space: nowrap;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-pri);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-title svg { width: 13px; height: 13px; transition: transform 0.2s; }
+.card:hover .card-title svg { transform: translate(2px, -2px); color: var(--accent); }
+
+.card-role {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.card-desc {
+    font-size: 14px;
+    color: var(--text-sec);
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+/* Tech Pills */
+.tech-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+.tech-pill {
+    font-size: 11px;
+    font-family: var(--font-code);
+    color: var(--text-pri);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+/* --- Mobile --- */
+@media (max-width: 850px) {
+    .wrapper { grid-template-columns: 1fr; padding: 0 20px; gap: 0; }
+    .sidebar { height: auto; padding: 60px 0 40px; position: relative; }
+    .nav-links { display: none; }
+    .content-area { padding-top: 0; }
+    
+    /* Stack date and content on mobile */
+    .card-content { grid-template-columns: 1fr; gap: 8px; padding: 0; }
+    .card-date { margin-bottom: 2px; font-size: 11px; }
+    .card { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border); border-radius: 0; }
+    .card:hover { background: transparent; border-color: var(--border); }
 }
 </style>
 </head>
 <body>
-<div class="progress" aria-hidden="true"><i></i></div>
 
-<header class="header" role="banner">
-  <div class="wrap">
-    <div class="mast">
-      <div class="brand"><span class="dot" aria-hidden="true"></span>ganesh@terminal</div>
-      <div class="mast-spacer" aria-hidden="true"></div>
-      <div class="right">
-        <!-- Updated X logo (closer to the actual X mark) -->
-        <a class="iconbtn" href="https://x.com/gansstal" target="_blank" rel="noopener" aria-label="X (Twitter)">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M22.23 2h-3.63l-6.57 7.53L6.2 2H1l8.41 11.77L1.39 22H5l6.84-7.83L17.8 22h5.2l-8.9-12.48L22.23 2z"/>
-          </svg>
-        </a>
-        <a class="iconbtn" href="https://www.linkedin.com/in/ganesh-talluri-614551281/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM10 9h3.8v1.8h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.89 1.28-1.89 2.6V21h-4z"/></svg>
-        </a>
-        <a class="iconbtn" href="https://github.com/g4nesh" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.1-.75.09-.74.09-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.86 2.84 1.32 3.54 1.01.11-.78.43-1.32.78-1.62-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.55.12-3.22 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.67.24 2.91.12 3.22.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.65-5.5 5.95.44.38.83 1.12.83 2.26v3.35c0 .32.22.69.83.58A12 12 0 0 0 12 .5z"/></svg>
-        </a>
-        <button class="iconbtn" id="themeBtn" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </div>
-    </div>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="top-block">
+            <div class="identity">
+                <h1>Ganesh Talluri</h1>
+                <h2>Phoenix, AZ, USA</h2>
+            </div>
+            <p class="bio">
+                17y/o founder building in applied AI. <br><br>
+                Backed by SoftBank & 1517 Fund. Currently building models for domain generalization and deep learning.
+            </p>
+            
+            <nav class="nav-links">
+                <a href="#work" class="nav-item active"><span class="nav-line"></span> EXPERIENCE</a>
+                <a href="#projects" class="nav-item"><span class="nav-line"></span> PROJECTS</a>
+            </nav>
+        </div>
 
-    <div class="nav-row">
-      <nav class="nav" id="topnav" aria-label="primary">
-        <a href="#about" data-section="about">about</a>
-        <a href="#experience" data-section="experience">experience</a>
-        <a href="#projects" data-section="projects">projects</a>
-        <a href="#publications" data-section="publications">publications</a>
-        <a href="#contact" data-section="contact">contact</a>
-        <a href="#help" data-section="help">help</a>
-        <div class="indicator" aria-hidden="true"></div>
-      </nav>
-    </div>
-  </div>
-</header>
+        <div class="socials">
+            <!-- Social Icons -->
+            <a href="https://x.com/gansstal" target="_blank" class="social-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://github.com/g4nesh" target="_blank" class="social-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.763-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/ganesh-talluri-614551281/" target="_blank" class="social-icon">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+        </div>
+    </aside>
 
-<main class="container" id="main">
-  <div class="breadcrumb">
-    <div class="path" id="path">tty0 — /home/ganesh/about</div>
-    <button class="copy tip" id="copyPath">copy path</button>
-  </div>
+    <!-- Content -->
+    <main class="content-area">
+        
+        <section id="work">
+            <!-- Luxen -->
+            <a href="https://luxenai.org/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-date">2023 — Present</div>
+                    <div class="card-details">
+                        <div class="card-title">
+                            Luxen LLC 
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
+                        </div>
+                        <div class="card-role">CEO & Founder</div>
+                        <p class="card-desc">
+                            Built 4 products including Flux and Kalo. Backed by SoftBank Corp. and 1517 Fund. Selected for HVTWF 2024 (<1% acceptance) and YES! Accelerator 2025.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Founder</span>
+                            <span class="tech-pill">AI Product</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-  <!-- ABOUT -->
-  <section id="about" class="section anchor">
-    <h1 class="reveal">ganesh talluri</h1>
-    <p class="reveal">17y/o founder &amp; computational biology researcher. i build things at the ai × biomed seam.</p>
-    <p class="small reveal">last updated: Sep 2025</p>
-    <p class="small reveal">startups · research · student</p>
-  </section>
+            <!-- Midwestern -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-date">2024 — 2025</div>
+                    <div class="card-details">
+                        <div class="card-title">Midwestern University</div>
+                        <div class="card-role">Computational Biology Researcher</div>
+                        <p class="card-desc">
+                            Developed 2D/3D segmentation pipelines for micro-CT bone imaging using TensorFlow/Keras. Shipped 5 standalone applications.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">TensorFlow</span>
+                            <span class="tech-pill">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mercatus -->
+            <a href="https://www.mercatus.org/" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-date">2025</div>
+                    <div class="card-details">
+                        <div class="card-title">
+                            Mercatus Center 
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
+                        </div>
+                        <div class="card-role">Fellow</div>
+                        <p class="card-desc">
+                            Exploring Complex Solutions Fellow. Selected as 1 of 48 worldwide (<10%).
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Fellowship</span>
+                            <span class="tech-pill">Systems Theory</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section anchor">
-    <h2 class="reveal">experience</h2>
-    <div class="items">
-      <article class="entry">
-        <h3 class="reveal">Luxen LLC (2023–Present) — CEO &amp; Founder</h3>
-        <ul class="ul reveal">
-          <li>Built 4 products; raised five-figure grants.</li>
-          <li>Backed by SoftBank Corp. and 1517 Fund; HVTWF 2024 (&lt;1%) and YES! Accelerator 2025.</li>
-          <li>Products: Flux · Kalo · Luxen · Abbie.</li>
-          <li>link: <a href="https://luxenai.org/" target="_blank" rel="noopener">https://luxenai.org/</a></li>
-        </ul>
-      </article>
+        <section id="projects">
+            <!-- Sculpt -->
+            <a href="https://www.medrxiv.org/content/10.1101/2025.04.01.25324440v1" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="card-date">2024</div>
+                    <div class="card-details">
+                        <div class="card-title">
+                            Sculpt 
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
+                        </div>
+                        <div class="card-role">Research Tool</div>
+                        <p class="card-desc">
+                            Multi-omics deep learning framework for amino acid localization & gene expression. Currently licensed to research labs.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Deep Learning</span>
+                            <span class="tech-pill">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-      <article class="entry">
-        <h3 class="reveal">Midwestern University (2024–2025) — Computational Biology Researcher</h3>
-        <ul class="ul reveal">
-          <li>2D/3D segmentation for micro-CT bone imaging using TensorFlow/Keras.</li>
-          <li>5 standalone apps; open-sourced fitting/prediction models.</li>
-        </ul>
-      </article>
+            <!-- HExt -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-date">In Progress</div>
+                    <div class="card-details">
+                        <div class="card-title">Omns</div>
+                        <div class="card-role">BioML Model</div>
+                        <p class="card-desc">
+                            Solving cross-tissue generalization in H&E staining via domain generalization & zero-shot learning.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Pathology</span>
+                            <span class="tech-pill">ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <article class="entry">
-        <h3 class="reveal">Mercatus Center — Exploring Complex Solutions Fellow (2025)</h3>
-        <ul class="ul reveal">
-          <li>Selected 1 of 48 worldwide (&lt;10%).</li>
-          <li>link: <a href="https://www.mercatus.org/students/exploring-complex-solutions-complex-world-fellowship" target="_blank" rel="noopener">https://www.mercatus.org/students/exploring-complex-solutions-complex-world-fellowship</a></li>
-        </ul>
-      </article>
-    </div>
-  </section>
+        <footer style="font-size: 12px; color: var(--text-sec); padding-top: 20px; opacity: 0.5;">
+            &copy; 2025 Ganesh Talluri. All rights reserved. 
+            <br>
+            hi@ganeshtalluri.com
+        </footer>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section anchor">
-    <h2 class="reveal">projects</h2>
-    <div class="items">
-      <article class="entry">
-        <h3 class="reveal">HExt (2025–2026)</h3>
-        <ul class="ul reveal">
-          <li>Cross-tissue generalization in H&amp;E via leave-one-tissue-out (LOTO) modeling.</li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <h3 class="reveal">Sculpt (2024–2025)</h3>
-        <ul class="ul reveal">
-          <li>Multi-omics deep learning for amino acid localization &amp; gene expression. Licensed to research labs.</li>
-          <li>preprint: <a href="https://www.medrxiv.org/content/10.1101/2025.04.01.25324440v1" target="_blank" rel="noopener">https://www.medrxiv.org/content/10.1101/2025.04.01.25324440v1</a></li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <h3 class="reveal">EnzyU (2023–2024)</h3>
-        <ul class="ul reveal">
-          <li>Predicted oxidoreductase reactions via docking + ML + cheminformatics.</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <!-- PUBLICATIONS -->
-  <section id="publications" class="section anchor">
-    <h2 class="reveal">publications</h2>
-    <div class="items">
-      <article class="entry">
-        <h3 class="reveal">Sculpt — Multi-Omics Deep Learning for Cortical Localization &amp; Expression</h3>
-        <ul class="ul reveal">
-          <li>preprint: <a href="https://www.medrxiv.org/content/10.1101/2025.04.01.25324440v1" target="_blank" rel="noopener">https://www.medrxiv.org/content/10.1101/2025.04.01.25324440v1</a></li>
-          <li>data: <a href="https://datadryad.org/share/10.5061/dryad.4j0zpc8qq" target="_blank" rel="noopener">https://datadryad.org/share/10.5061/dryad.4j0zpc8qq</a></li>
-        </ul>
-      </article>
-
-      <article class="entry">
-        <h3 class="reveal">GNNs &amp; PCA in Multi-Omics Frameworks</h3>
-        <ul class="ul reveal">
-          <li>link: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5228555" target="_blank" rel="noopener">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5228555</a></li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <!-- CONTACT (refined) -->
-  <section id="contact" class="section anchor">
-    <h2 class="reveal">contact</h2>
-    <dl class="contact-list reveal">
-      <div class="contact-row">
-        <dt>x</dt>
-        <dd><a class="contact-link" href="https://x.com/gansstal" target="_blank" rel="noopener">https://x.com/gansstal</a></dd>
-        <dd></dd>
-      </div>
-      <div class="contact-row">
-        <dt>linkedin</dt>
-        <dd><a class="contact-link" href="https://www.linkedin.com/in/ganesh-talluri-614551281/" target="_blank" rel="noopener">https://www.linkedin.com/in/ganesh-talluri-614551281/</a></dd>
-        <dd></dd>
-      </div>
-      <div class="contact-row">
-        <dt>github</dt>
-        <dd><a class="contact-link" href="https://github.com/g4nesh" target="_blank" rel="noopener">https://github.com/g4nesh</a></dd>
-        <dd></dd>
-      </div>
-      <div class="contact-row">
-        <dt>email</dt>
-        <dd><a class="contact-link" href="mailto:hi@ganeshtalluri.com">hi@ganeshtalluri.com</a></dd>
-        <dd><button class="copy mini tip" id="copyEmail" type="button" aria-label="copy email">copy</button></dd>
-      </div>
-    </dl>
-  </section>
-
-  <section id="help" class="section anchor">
-    <h2 class="reveal">help</h2>
-    <ul class="ul reveal">
-      <li>tabs are a segmented control; the underline slides to the active tab.</li>
-      <li>breadcrumb shows a pseudo path; “copy path” copies the current section.</li>
-      <li>press <kbd>t</kbd> to toggle theme (dark → light → matrix).</li>
-      <li>press <kbd>g</kbd> to scroll to the top.</li>
-    </ul>
-  </section>
-
-  <div class="footer">© ganesh talluri · simple, text-first ui · theme toggles</div>
-</main>
+    </main>
+</div>
 
 <script>
-/* tiny helpers */
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* Active Link Highlighting */
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('section');
 
-/* progress */
-const bar = document.querySelector('.progress>i');
-function setProgress(){ const h=document.documentElement; const p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1); bar.style.transform=`scaleX(${Math.max(0,Math.min(1,p))})`; }
-setProgress(); addEventListener('scroll', setProgress, {passive:true}); addEventListener('resize', setProgress);
-
-/* theme */
-const themeBtn = $('#themeBtn');
-function applyTheme(t){ document.documentElement.classList.remove('theme-light','theme-matrix'); if(t==='light')document.documentElement.classList.add('theme-light'); if(t==='matrix')document.documentElement.classList.add('theme-matrix'); localStorage.setItem('theme',t); }
-function nextTheme(t){ return t==='dark'?'light':t==='light'?'matrix':'dark'; }
-let theme = localStorage.getItem('theme') || 'dark'; applyTheme(theme);
-themeBtn.addEventListener('click',()=>{ theme=nextTheme(theme); applyTheme(theme); });
-
-/* scrollspy + indicator + breadcrumb */
-const rail = $('#topnav'), links = $$('#topnav a'), indicator = $('.indicator'), pathEl = $('#path');
-const sections = links.map(a=>document.getElementById(a.dataset.section));
-function moveIndicator(){
-  const cur = links.find(a=>a.getAttribute('aria-current')==='page') || links[0];
-  const r = cur.getBoundingClientRect(), rr = rail.getBoundingClientRect();
-  indicator.style.width = r.width+'px'; indicator.style.transform = `translateX(${r.left-rr.left}px)`;
-}
-function setActive(id, fromScroll=true){
-  links.forEach(a=>a.setAttribute('aria-current', a.dataset.section===id ? 'page' : 'false'));
-  pathEl.textContent = `tty0 — /home/ganesh/${id}`; moveIndicator();
-  if(fromScroll) history.replaceState(null,"",`#${id}`);
-}
-const spy = new IntersectionObserver((ents)=>{
-  const vis = ents.filter(e=>e.isIntersecting).sort((a,b)=>a.target.offsetTop-b.target.offsetTop);
-  if(vis[0]) setActive(vis[0].target.id, true);
-},{rootMargin:"-55% 0px -40% 0px", threshold:[0,1]});
-sections.forEach(s=>spy.observe(s));
-addEventListener('resize', moveIndicator);
-rail.addEventListener('click', (e)=>{
-  const a=e.target.closest('a'); if(!a) return; e.preventDefault();
-  document.getElementById(a.dataset.section).scrollIntoView({behavior:prefersReduced?'auto':'smooth', block:'start'});
-  setActive(a.dataset.section, false);
-});
-
-/* breadcrumb copy */
-const copyBtn=$('#copyPath');
-copyBtn.addEventListener('click', async ()=>{
-  const val=(pathEl.textContent.split(' — ')[1]||'/home/ganesh/about').trim();
-  try{ await navigator.clipboard.writeText(val); copyBtn.classList.add('show'); setTimeout(()=>copyBtn.classList.remove('show'),1100);}catch(_){}
-});
-
-/* contact: copy email */
-const copyEmail=$('#copyEmail');
-copyEmail.addEventListener('click', async ()=>{
-  try{ await navigator.clipboard.writeText('hi@ganeshtalluri.com'); copyEmail.classList.add('show'); setTimeout(()=>copyEmail.classList.remove('show'),1100);}catch(_){}
-});
-
-/* reveal */
-const reveals = $$('.reveal');
-if(!prefersReduced){
-  const obs=new IntersectionObserver((es)=>{ es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); obs.unobserve(en.target);} }); },{threshold:.12});
-  reveals.forEach(el=>obs.observe(el));
-}else{ reveals.forEach(el=>el.classList.add('in')); }
-
-/* boot */
-document.addEventListener('DOMContentLoaded',()=>{
-  const id=(location.hash||'#about').slice(1);
-  const target=document.getElementById(id)||document.getElementById('about');
-  target.scrollIntoView({behavior:'auto', block:'start'});
-  setActive(target.id, true); moveIndicator();
-});
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href').includes(current)) {
+                item.classList.add('active');
+            }
+        });
+    });
 </script>
 </body>
 </html>
