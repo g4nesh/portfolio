@@ -1,135 +1,571 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S64BK4YFLC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S64BK4YFLC');
-</script>
-    
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ganesh Talluri | Coming Soon</title>
+    <title>Ganesh Talluri | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body, html {
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --link-blue: #467cc2;
+            --accent-color: #000000;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            min-height: 100vh;
         }
 
-        .container {
-            text-align: center;
-            padding: 20px;
+        a {
+            color: var(--link-blue);
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .logo {
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            opacity: 0.7;
+        a:hover {
+            text-decoration: underline;
+            color: #2c599d;
         }
 
+        /* --- SIDEBAR NAVIGATION --- */
+        nav {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #f0f0f0;
+            background: var(--bg-color);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        nav li {
+            margin-bottom: 1rem;
+        }
+
+        nav a {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-socials {
+            margin-top: auto;
+            display: flex;
+            gap: 18px;
+            font-size: 1.3rem;
+        }
+
+        .nav-socials a {
+            color: var(--text-muted);
+        }
+
+        .nav-socials a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        main {
+            margin-left: var(--sidebar-width);
+            padding: 5rem 7rem;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* --- TYPOGRAPHY --- */
         h1 {
-            font-size: clamp(3rem, 10vw, 5rem);
-            font-weight: 800;
-            margin: 0;
-            background: linear-gradient(to right, #fff 20%, #444 40%, #444 60%, #fff 80%);
-            background-size: 200% auto;
-            color: #000;
-            background-clip: text;
-            text-fill-color: transparent;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 4s linear infinite;
+            font-family: "Georgia", "Times New Roman", serif;
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: "Georgia", "Times New Roman", serif;
+            font-size: 1.8rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            color: #222;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
         }
 
         p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: flex-start;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- CLEAN LIST STYLE --- */
+        ul.clean-list {
+            list-style-type: disc;
+            margin-left: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        ul.clean-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+        }
+
+        ul.clean-list a {
+            color: var(--link-blue);
+            font-weight: 400;
+        }
+
+        .meta-bold {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .meta-year {
+            color: var(--text-muted);
+        }
+
+        /* --- PUBLICATIONS SPECIFIC --- */
+        .pub-item {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .pub-journal {
+            font-style: italic;
+        }
+
+        /* --- EXPERIENCE / STANDARD ITEMS --- */
+        .item {
+            margin-bottom: 2.5rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-title {
+            font-weight: 700;
+            color: #333;
             font-size: 1.1rem;
-            color: #888;
-            margin-top: 20px;
-            max-width: 500px;
-            line-height: 1.6;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* Styling the Luxen hyperlink */
-        p a {
-            color: #fff;
-            text-decoration: none;
+        .item-meta {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .item-role {
+            display: block;
+            margin-bottom: 0.6rem;
             font-weight: 500;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            transition: border-color 0.3s;
+            color: #555;
         }
 
-        p a:hover {
-            border-bottom: 1px solid #fff;
+        .item-details {
+            list-style-type: circle;
+            margin-left: 1.2rem;
+            font-size: 0.95rem;
+            color: #666;
         }
 
-        .social-links {
-            margin-top: 40px;
+        .item-details li {
+            margin-bottom: 0.3rem;
         }
 
-        .social-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
+        /* --- SKILLS SECTION STYLING --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background-color: #f7f7f7;
+            border: 1px solid #eeeeee;
+            color: var(--text-secondary);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid #f0f0f0;
             font-size: 0.9rem;
-            transition: opacity 0.3s;
-            border-bottom: 1px solid transparent;
+            color: var(--text-muted);
+            text-align: center;
         }
 
-        .social-links a:hover {
-            opacity: 0.6;
-            border-bottom: 1px solid #fff;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
             }
-        }
 
-        .glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid #eaeaea;
+                border-right: none;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            nav ul {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 0;
+                flex-wrap: wrap;
+            }
+
+            nav li {
+                margin-bottom: 0;
+            }
+
+            .nav-socials {
+                margin-top: 0;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 3rem 2rem;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                gap: 2rem;
+            }
+
+            .profile-img {
+                align-self: center;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="glow"></div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#awards">Awards & Grants</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
 
-    <div class="container">
-        <div class="logo">Ganesh Talluri</div>
-        <h1>Coming Soon</h1>
-        <p>Building the future of action for LLMs. <br> Check it out at <a href="https://luxenai.org" target="_blank">luxenai.org</a></p>
-        
-        <div class="social-links">
-            <a href="mailto:hello@ganeshtalluri.com">Email</a>
-            <a href="https://www.linkedin.com/in/gtalluri/" target="_blank">LinkedIn</a>
-            <a href="https://x.com/gansstal" target="_blank">Twitter</a>
-            <a href="https://github.com/g4nesh" target="_blank">GitHub</a>
+        <div class="nav-socials">
+            <a href="mailto:talluri.ganeshsai@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/gtalluri/" target="_blank" title="LinkedIn"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/g4nesh" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/gansstal" target="_blank" title="X (Twitter)"><i
+                    class="fa-brands fa-x-twitter"></i></a>
         </div>
-    </div>
+    </nav>
 
+    <main id="home">
+
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Ganesh Talluri</h1>
+                <p>
+                    Hi! I'm Ganesh Talluri, a student, researcher, and entrepreneur based in <a
+                        href="https://www.phoenix.gov/" target="_blank">Phoenix, AZ</a>.
+                    I am the co-founder of <a href="https://luxenai.org" target="_blank">Luxen LLC</a> and an
+                    Associate Scholar at the <a href="https://masason-foundation.org/en/" target="_blank">Masason
+                        Foundation</a>.
+                </p>
+                <p>
+                    My work spans autonomous AI agents, medical imaging segmentation, and computational biology. I am
+                    passionate about building trustworthy AI systems and applying deep learning to solve complex
+                    biological problems. I have also worked on fine-tuning deep learning models for out-of-distribution
+                    tasks and created generalizable models for image analysis. Additionally, I have worked on parameter
+                    efficient
+                    methods for creating low-latency computer use agents using frontier models.
+                </p>
+                <p>
+                    Most recently, I was a Ventures-TECH Winter Fellow at <a href="https://www.harvard.edu/"
+                        target="_blank">Harvard University</a> and a Don Lavoie Fellow at <a
+                        href="https://www.mercatus.org/students/don-lavoie-fellowship" target="_blank">George Mason
+                        University</a>.
+                    I am currently a Research Assistant at <a href="https://www.midwestern.edu/"
+                        target="_blank">Midwestern University</a>.
+                </p>
+            </div>
+            <img src="pfp.png" alt="Ganesh Talluri" class="profile-img">
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title"><a href="https://www.basisschools.org/peoria" target="_blank">BASIS
+                            Peoria</a></span>
+                    <span class="item-meta">Aug 2022 – May 2026</span>
+                </div>
+                <span class="item-role">High School Diploma</span>
+                <ul class="item-details">
+                    <li>Cumulative GPA: 4.7/5.0</li>
+                    <li>National Merit Scholarship Commended Scholar, AP Scholar with Distinction</li>
+                    <li>President of Science Olympiad, Co-captain of Academic Decathlon, and President of USABO Club
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title"><a href="https://luxenai.org" target="_blank">Luxen LLC (Applied AI
+                            Lab)</a></span>
+                    <span class="item-meta">Phoenix, AZ | March 2024 – Present</span>
+                </div>
+                <span class="item-role">Co-founder and CEO</span>
+                <ul class="item-details">
+                    <li>Founded an applied-AI venture building autonomous agents.</li>
+                    <li>Raised $48K+ in pre-seed funding from <a href="https://www.1517fund.com/" target="_blank">1517
+                            Fund</a>, <a href="https://group.softbank/en" target="_blank">SoftBank</a>, and <a
+                            href="https://www.bizworld.org/" target="_blank">Bizworld</a>.</li>
+                    <li>Reached 5K+ active users and over 1.5M media views.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title"><a href="https://www.midwestern.edu/" target="_blank">Midwestern
+                            University</a></span>
+                    <span class="item-meta">Glendale, AZ | Aug 2024 – Present</span>
+                </div>
+                <span class="item-role">Research Assistant</span>
+                <ul class="item-details">
+                    <li>Developed 3D segmentation models for bone samples using microCT imaging.</li>
+                    <li>Published in <a href="https://www.frontiersin.org/journals/bioinformatics"
+                            target="_blank">Frontiers in Bioinformatics</a>.</li>
+                    <li>Presented poster at <a
+                            href="https://www.anatomy.org/ANATOMY/Meetings-Events/Annual-Meeting--Anatomy-Connected.aspx"
+                            target="_blank">Anatomy Connected 2026</a>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Independent Research</h2>
+            <ul class="clean-list">
+                <li>
+                    <a href="#">Generalization Measures Reloaded: Adapting to Modern Neural Network Challenges</a>
+                    <span class="meta-bold">[Targeting ICML 2026]</span>
+                    <span class="meta-year">(Mila, Stanford, UdeM Collab)</span>
+                </li>
+                <li>
+                    <a href="#">A Novel Dual-View Consistency Module for Zero-Shot Histology Segmentation</a>
+                    <span class="meta-bold">[Targeting CoLLAs 2026]</span>
+                    <span class="meta-year">(Advisor: Hiroki Naganuma)</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="pub-item">
+                <span class="pub-title"><a
+                        href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527"
+                        target="_blank">New software and 2D models to segment bone in micro-CT scans</a></span><br>
+                Talluri, G., et al. <span class="pub-journal">Frontiers in Bioinformatics</span>. 2025.<br>
+                <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527"
+                    target="_blank" style="font-size: 0.9em;">[HTML]</a>
+            </div>
+
+            <div class="pub-item">
+                <span class="pub-title">SculptTM: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal
+                    Cerebral Cortex Localization</span><br>
+                Talluri, G. <span class="pub-journal">bioRxiv</span>. 2025.<br>
+                <a href="https://doi.org/10.1101/2025.04.01.25324440" target="_blank" style="font-size: 0.9em;">[DOI:
+                    10.1101/2025.04.01.25324440]</a>
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2>Awards, Grants & Fellowships</h2>
+            <ul class="clean-list">
+                <li>
+                    <a href="https://masason-foundation.org/en/" target="_blank">Masason Foundation Scholar</a>
+                    <span class="meta-bold">[~$500,000 Full-Ride Scholarship]</span>
+                    <span class="meta-year">(2025 – Present)</span>
+                </li>
+                <li>
+                    <a href="https://www.mercatus.org/students/don-lavoie-fellowship" target="_blank">Don Lavoie
+                        Fellowship</a>
+                    <span class="meta-bold">[Political Economy & Governance]</span>
+                    <span class="meta-year">(2025, Fellowship)</span>
+                </li>
+                <li>
+                    <a href="https://www.harvard.edu" target="_blank">Harvard Ventures-TECH Winter Fellowship</a>
+                    <span class="meta-bold">[0.5% Acceptance Rate]</span>
+                    <span class="meta-year">(2024, Fellowship)</span>
+                </li>
+
+                <li>
+                    <a href="https://www.zfellows.com/" target="_blank">ZFellows Finalist</a>
+                    <span class="meta-bold">[x2 Finalist]</span>
+                    <span class="meta-year">(2024)</span>
+                </li>
+                <li>
+                    <a href="https://www.microsoft.com/en-us/startups" target="_blank">Microsoft for Startups Founders
+                        Hub</a>
+                    <span class="meta-bold">[Backed Startup]</span>
+                    <span class="meta-year">(2024)</span>
+                </li>
+                <li>
+                    <a href="https://www.1517fund.com/" target="_blank">1517 Fund Medici Grantee</a>
+                    <span class="meta-bold">[Research Grant]</span>
+                    <span class="meta-year">(2025, Grant)</span>
+                </li>
+                <li>
+                    <a href="https://www.bizworld.org/" target="_blank">BizWorld YES! Startup Accelerator</a>
+                    <span class="meta-bold">[Pre-seed Funding]</span>
+                    <span class="meta-year">(2024, Startup)</span>
+                </li>
+
+                <li>
+                    <a href="https://www.usad.org/" target="_blank">Academic Decathlon National Champion</a>
+                    <span class="meta-bold">[Gold Overall, Top 0.1%]</span>
+                    <span class="meta-year">(2025, Award)</span>
+                </li>
+                <li>
+                    <a href="https://azsef.asu.edu/" target="_blank">Arizona Science & Engineering Fair (AzSEF)</a>
+                    <span class="meta-bold">[2nd Place, Comp Bio]</span>
+                    <span class="meta-year">(2024)</span>
+                </li>
+                <li>
+                    <a href="https://www.usabo-trc.org/" target="_blank">USA Biology Olympiad</a>
+                    <span class="meta-bold">[2x Honorable Mention]</span>
+                    <span class="meta-year">(2024, 2025)</span>
+                </li>
+                <li>
+                    <a href="https://www.usmdo.org/" target="_blank">US Medical & Disease Olympiad</a>
+                    <span class="meta-bold">[Honorable Mention]</span>
+                    <span class="meta-year">(2025)</span>
+                </li>
+                <li>
+                    <a href="#">International Biology Battle</a>
+                    <span class="meta-bold">[1st Place Team Worldwide]</span>
+                    <span class="meta-year">(2025)</span>
+                </li>
+                <li>
+                    <a href="https://www.azbio.org/" target="_blank">AZ Bioscience Week & Governor's Center</a>
+                    <span class="meta-bold">[Invited Research Presenter]</span>
+                    <span class="meta-year">(2025)</span>
+                </li>
+                <li>
+                    <a href="https://www.aztechcouncil.org/event/2024-gcoi/" target="_blank">Future Innovator of the
+                        Year</a>
+                    <span class="meta-bold">[Honorable Mention]</span>
+                    <span class="meta-year">(2024)</span>
+                </li>
+                <li>
+                    <a href="https://www.soinc.org/" target="_blank">Science Olympiad National Invitational</a>
+                    <span class="meta-bold">[2nd Place, Microbe Mission]</span>
+                    <span class="meta-year">(2024)</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Python (3+ yrs)</span>
+                <span class="skill-tag">Java (2 yrs)</span>
+                <span class="skill-tag">HTML5 (1 yr)</span>
+                <span class="skill-tag">Tailwind CSS (1 yr)</span>
+                <span class="skill-tag">TensorFlow (2 yrs)</span>
+                <span class="skill-tag">PyTorch (2 yrs)</span>
+                <span class="skill-tag">SQL (1 yr)</span>
+                <span class="skill-tag">Machine Learning (3 yrs)</span>
+                <span class="skill-tag">MicroCT Imaging (1 yr)</span>
+                <span class="skill-tag">Wet/Dry Lab Methods (4 yrs)</span>
+                <span class="skill-tag">LLMs & Optimizers (1 yr)</span>
+                <span class="skill-tag">Robotic Process Automation (1 yr)</span>
+                <span class="skill-tag">Playwright (1 yr)</span>
+                <span class="skill-tag">Transformers (1 yr)</span>
+                <span class="skill-tag">Github (2 yrs)</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Ganesh Talluri. All rights reserved.</p>
+        </footer>
+
+    </main>
 </body>
+
 </html>
