@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ganesh Talluri</title>
+    <meta name="color-scheme" content="light dark">
     <link rel="icon" href="pfp1.png" type="image/png">
-<link rel="apple-touch-icon" href="pfp1.png">
+    <link rel="apple-touch-icon" href="pfp1.png">
 
-<!-- Optional: force consistent display size on some browsers -->
-<link rel="icon" sizes="32x32" href="pfp1.png">
-<link rel="icon" sizes="192x192" href="pfp1.png">
+    <!-- Optional: force consistent display size on some browsers -->
+    <link rel="icon" sizes="32x32" href="pfp1.png">
+    <link rel="icon" sizes="192x192" href="pfp1.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
@@ -22,8 +23,25 @@
             --text-secondary: #555555;
             --text-muted: #888888;
             --link-blue: #467cc2;
+            --link-hover: #2c599d;
             --accent-color: #000000;
             --sidebar-width: 280px;
+            --border-color: #f0f0f0;
+            --section-border: #eee;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+        }
+
+        html[data-theme="dark"] {
+            --bg-color: #0b0f14;
+            --text-main: #e5e7eb;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --link-blue: #7cb6ff;
+            --link-hover: #a6ccff;
+            --accent-color: #f8fafc;
+            --border-color: #1f2937;
+            --section-border: #1f2937;
+            --shadow-color: rgba(0, 0, 0, 0.35);
         }
 
         * {
@@ -39,6 +57,7 @@
             line-height: 1.7;
             display: flex;
             min-height: 100vh;
+            transition: background-color 0.2s, color 0.2s;
         }
 
         a {
@@ -49,7 +68,35 @@
 
         a:hover {
             text-decoration: underline;
-            color: #2c599d;
+            color: var(--link-hover);
+        }
+
+        /* --- THEME TOGGLE --- */
+        .theme-toggle {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 300;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.05s;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-main);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(1px);
         }
 
         /* --- STATUS INDICATOR --- */
@@ -71,6 +118,7 @@
         }
 
         @keyframes pulse {
+
             0%,
             100% {
                 opacity: 1;
@@ -91,9 +139,10 @@
             padding: 5rem 3rem;
             display: flex;
             flex-direction: column;
-            border-right: 1px solid #f0f0f0;
+            border-right: 1px solid var(--border-color);
             background: var(--bg-color);
             z-index: 100;
+            transition: background-color 0.2s, border-color 0.2s;
         }
 
         nav ul {
@@ -153,8 +202,8 @@
             font-size: 1.8rem;
             margin-top: 4rem;
             margin-bottom: 1.5rem;
-            color: #222;
-            border-bottom: 1px solid #eee;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--section-border);
             padding-bottom: 0.5rem;
         }
 
@@ -182,7 +231,7 @@
             border-radius: 50%;
             object-fit: cover;
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         /* --- CLEAN LIST STYLE --- */
@@ -204,7 +253,7 @@
 
         .meta-bold {
             font-weight: 600;
-            color: #444;
+            color: var(--text-main);
         }
 
         .meta-year {
@@ -240,7 +289,7 @@
 
         .item-title {
             font-weight: 700;
-            color: #333;
+            color: var(--text-main);
             font-size: 1.1rem;
         }
 
@@ -254,14 +303,14 @@
             display: block;
             margin-bottom: 0.6rem;
             font-weight: 500;
-            color: #555;
+            color: var(--text-secondary);
         }
 
         .item-details {
             list-style-type: circle;
             margin-left: 1.2rem;
             font-size: 0.95rem;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .item-details li {
@@ -300,10 +349,11 @@
         footer {
             margin-top: 6rem;
             padding-top: 2rem;
-            border-top: 1px solid #f0f0f0;
+            border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
             color: var(--text-muted);
             text-align: center;
+            transition: border-color 0.2s;
         }
 
         /* --- RESPONSIVE --- */
@@ -317,7 +367,7 @@
                 height: auto;
                 position: relative;
                 padding: 1.5rem 2rem;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid var(--border-color);
                 border-right: none;
                 flex-direction: row;
                 align-items: center;
@@ -352,11 +402,20 @@
             .profile-img {
                 align-self: center;
             }
+
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" type="button">
+        <i class="fas fa-moon"></i>
+    </button>
 
     <nav>
         <ul>
@@ -371,9 +430,11 @@
 
         <div class="nav-socials">
             <a href="mailto:talluri.ganeshsai@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/gtalluri/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/gtalluri/" target="_blank" title="LinkedIn"><i
+                    class="fab fa-linkedin"></i></a>
             <a href="https://github.com/g4nesh" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ" target="_blank" title="Google Scholar">
+            <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ" target="_blank"
+                title="Google Scholar">
                 <i class="ai ai-google-scholar"></i></a>
 
         </div>
@@ -390,9 +451,11 @@
                 <h1>Ganesh Talluri</h1>
                 <p>
                     Hi! I'm Ganesh Talluri, a student at <a href="https://enrollbasis.com/peoria/" target="_blank">BASIS
-                            Peoria</a> based in <a href="https://www.phoenix.gov" target="_blank">Phoenix, AZ</a>.
-                    I am the co-founder of <a href="https://luxenai.org" target="_blank">Luxen LLC</a> and a machine learning 
-            <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ" target="_blank">researcher</a></a>.
+                        Peoria</a> based in <a href="https://www.phoenix.gov" target="_blank">Phoenix, AZ</a>.
+                    I am the co-founder of <a href="https://luxenai.org" target="_blank">Luxen LLC</a> and a machine
+                    learning
+                    <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ"
+                        target="_blank">researcher</a></a>.
                 </p>
                 <p>
                     My work spans autonomous AI agents, medical imaging segmentation, and computational biology. I am
@@ -408,9 +471,9 @@
                         href="https://www.mercatus.org/students/don-lavoie-fellowship" target="_blank">George Mason
                         University</a>.
                     I am currently an Associate Scholar at the<a href="https://masason-foundation.org/en/"
-                        target="_blank">Masason Foundation</a> and a Research Assistant at <a href="https://www.midwestern.edu/"
-                        target="_blank">Midwestern University</a>, advised by Prof. <a href="https://facultyprofiles.midwestern.edu/57-andrew-h-lee"
-                        target="_blank">Andrew Lee</a>.
+                        target="_blank">Masason Foundation</a> and a Research Assistant at <a
+                        href="https://www.midwestern.edu/" target="_blank">Midwestern University</a>, advised by Prof.
+                    <a href="https://facultyprofiles.midwestern.edu/57-andrew-h-lee" target="_blank">Andrew Lee</a>.
                 </p>
                 <p>
                     Feel free to reach out if you are interested in my work!
@@ -450,7 +513,8 @@
                 <span class="item-role">Co-founder and CEO</span>
                 <ul class="item-details">
                     <li>Founded an applied-AI venture building autonomous agents.</li>
-                    <li>Raised $48K in grant funding and equipment from <a href="https://www.1517fund.com/" target="_blank">1517
+                    <li>Raised $48K in grant funding and equipment from <a href="https://www.1517fund.com/"
+                            target="_blank">1517
                             Fund</a>, <a href="https://group.softbank/en" target="_blank">SoftBank</a>, and <a
                             href="https://www.bizworld.org/" target="_blank">Bizworld</a>.</li>
                     <li>Reached 5K+ active users and over 1.5M media views.</li>
@@ -466,7 +530,8 @@
                 <span class="item-role">Research Assistant</span>
                 <ul class="item-details">
                     <li>Developed 3D segmentation models for bone samples using microCT imaging.</li>
-                    <li>Published in <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527"
+                    <li>Published in <a
+                            href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527"
                             target="_blank">Frontiers in Bioinformatics</a>.</li>
                     <li>Presented poster at <a
                             href="https://www.anatomy.org/ANATOMY/Meetings-Events/Annual-Meeting--Anatomy-Connected.aspx"
@@ -547,7 +612,8 @@
                     <span class="meta-year">(2025, Award)</span>
                 </li>
                 <li>
-                    <a href="https://www.aztechcouncil.org/news/2025-governors-celebration-of-innovation-future-innovators-and-teacher-of-the-year-awardees-announced/" target="_blank">Future Innovator of the
+                    <a href="https://www.aztechcouncil.org/news/2025-governors-celebration-of-innovation-future-innovators-and-teacher-of-the-year-awardees-announced/"
+                        target="_blank">Future Innovator of the
                         Year</a>
                     <span class="meta-bold">[Honorable Mention]</span>
                     <span class="meta-year">(2025)</span>
@@ -563,7 +629,8 @@
                     <span class="meta-year">(2025)</span>
                 </li>
                 <li>
-                    <a href="https://bioolympiad.wixsite.com/beckmanhs/copy-of-2024-biology-battle-results" target="_blank">International Biology Battle</a>
+                    <a href="https://bioolympiad.wixsite.com/beckmanhs/copy-of-2024-biology-battle-results"
+                        target="_blank">International Biology Battle</a>
                     <span class="meta-bold">[1st Place Team Worldwide]</span>
                     <span class="meta-year">(2025)</span>
                 </li>
@@ -579,7 +646,8 @@
                     <span class="meta-year">(2025, Grant)</span>
                 </li>
                 <li>
-                    <a href="https://www.azscience.org/visit/events/arizona-science-engineering-fair-azsef/awards/" target="_blank">Arizona Science & Engineering Fair (AzSEF)</a>
+                    <a href="https://www.azscience.org/visit/events/arizona-science-engineering-fair-azsef/awards/"
+                        target="_blank">Arizona Science & Engineering Fair (AzSEF)</a>
                     <span class="meta-bold">[2nd Place, Comp Bio]</span>
                     <span class="meta-year">(2025)</span>
                 </li>
@@ -623,6 +691,39 @@
         </footer>
 
     </main>
+    <!-- Replace ONLY the <script> block with this (everything else unchanged) -->
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+            const icon = btn.querySelector('i');
+
+            const stored = localStorage.getItem('theme');
+            const initial = (stored === 'dark' || stored === 'light') ? stored : 'light';
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    root.setAttribute('data-theme', 'dark');
+                    icon.className = 'fas fa-sun';
+                    btn.setAttribute('aria-label', 'Switch to light mode');
+                } else {
+                    root.removeAttribute('data-theme');
+                    icon.className = 'fas fa-moon';
+                    btn.setAttribute('aria-label', 'Switch to dark mode');
+                }
+                localStorage.setItem('theme', theme);
+            }
+
+            setTheme(initial);
+
+            btn.addEventListener('click', function () {
+                const isDark = root.getAttribute('data-theme') === 'dark';
+                setTheme(isDark ? 'light' : 'dark');
+            });
+        })();
+    </script>
+
+
 </body>
 
 </html>
