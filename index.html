@@ -9,14 +9,13 @@
     <link rel="icon" href="pfp1.png" type="image/png">
     <link rel="apple-touch-icon" href="pfp1.png">
 
-    <!-- Optional: force consistent display size on some browsers -->
     <link rel="icon" sizes="32x32" href="pfp1.png">
     <link rel="icon" sizes="192x192" href="pfp1.png">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+
     <style>
-        /* --- CSS VARIABLES & RESET --- */
         :root {
             --bg-color: #ffffff;
             --text-main: #333333;
@@ -71,7 +70,6 @@
             color: var(--link-hover);
         }
 
-        /* --- THEME TOGGLE --- */
         .theme-toggle {
             position: fixed;
             top: 1.5rem;
@@ -99,7 +97,6 @@
             transform: translateY(1px);
         }
 
-        /* --- STATUS INDICATOR --- */
         .status-indicator {
             display: inline-flex;
             align-items: center;
@@ -118,9 +115,7 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 1;
             }
 
@@ -129,7 +124,6 @@
             }
         }
 
-        /* --- SIDEBAR NAVIGATION --- */
         nav {
             width: var(--sidebar-width);
             height: 100vh;
@@ -180,7 +174,6 @@
             color: var(--text-main);
         }
 
-        /* --- MAIN CONTENT AREA --- */
         main {
             margin-left: var(--sidebar-width);
             padding: 5rem 7rem;
@@ -188,7 +181,6 @@
             width: 100%;
         }
 
-        /* --- TYPOGRAPHY --- */
         h1 {
             font-family: "Georgia", "Times New Roman", serif;
             font-size: 2.8rem;
@@ -213,7 +205,6 @@
             font-size: 1.05rem;
         }
 
-        /* --- HERO SECTION --- */
         .hero {
             display: flex;
             align-items: flex-start;
@@ -234,7 +225,6 @@
             box-shadow: 0 4px 15px var(--shadow-color);
         }
 
-        /* --- CLEAN LIST STYLE --- */
         ul.clean-list {
             list-style-type: disc;
             margin-left: 1.2rem;
@@ -260,7 +250,6 @@
             color: var(--text-muted);
         }
 
-        /* --- PUBLICATIONS SPECIFIC --- */
         .pub-item {
             margin-bottom: 1.5rem;
             font-size: 1rem;
@@ -276,7 +265,6 @@
             font-style: italic;
         }
 
-        /* --- EXPERIENCE / STANDARD ITEMS --- */
         .item {
             margin-bottom: 2.5rem;
         }
@@ -317,7 +305,6 @@
             margin-bottom: 0.3rem;
         }
 
-        /* --- SKILLS SECTION STYLING --- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -345,7 +332,6 @@
             line-height: 1.8;
         }
 
-        /* --- FOOTER --- */
         footer {
             margin-top: 6rem;
             padding-top: 2rem;
@@ -356,7 +342,6 @@
             transition: border-color 0.2s;
         }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             body {
                 flex-direction: column;
@@ -428,22 +413,25 @@
         </ul>
 
         <div class="nav-socials">
-            <a href="mailto:talluri.ganeshsai@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/ganstal/" target="_blank" title="LinkedIn"><i
-                    class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/g4nesh" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ" target="_blank"
-                title="Google Scholar">
-                <i class="ai ai-google-scholar"></i></a>
-            <a href="https://x.com/ganstlr" target="_blank" title="X">
-    <i class="fab fa-x-twitter"></i>
-</a>
-
+            <a href="mailto:talluri.ganeshsai@gmail.com" title="Email" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/ganstal/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/g4nesh" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar">
+                <i class="ai ai-google-scholar"></i>
+            </a>
+            <a href="https://x.com/ganstlr" target="_blank" rel="noopener noreferrer" title="X" aria-label="X">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
         </div>
     </nav>
 
     <main id="home">
-
         <section class="hero">
             <div class="hero-text">
                 <div class="status-indicator">
@@ -452,33 +440,24 @@
                 </div>
                 <h1>Ganesh Talluri</h1>
                 <p>
-                    Hi! I'm Ganesh Talluri, a student at <a href="https://enrollbasis.com/peoria/" target="_blank">BASIS
-                        Peoria</a> based in <a href="https://www.phoenix.gov" target="_blank">Phoenix, AZ</a>.
-                    I am the co-founder of <a href="https://luxenai.org" target="_blank">Luxen LLC</a> and a machine
-                    learning
-                    <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ"
-                        target="_blank">researcher</a></a>.
+                    Hi! I'm Ganesh Talluri, a student at <a href="https://enrollbasis.com/peoria/" target="_blank" rel="noopener noreferrer">BASIS Peoria</a> based in <a href="https://www.phoenix.gov" target="_blank" rel="noopener noreferrer">Phoenix, AZ</a>.
+                    I am the co-founder of <a href="https://luxenai.org" target="_blank" rel="noopener noreferrer">Luxen LLC</a> and a machine
+                    learning <a href="https://scholar.google.com/citations?hl=en&user=HwDviz4AAAAJ" target="_blank" rel="noopener noreferrer">researcher</a>.
                 </p>
                 <p>
                     My work spans autonomous AI agents, medical imaging segmentation, and computational biology. I am
                     passionate about building trustworthy AI systems and applying deep learning to solve complex
                     biological problems. I have also worked on fine-tuning deep learning models for out-of-distribution
                     tasks and created generalizable models for image analysis. Additionally, I have worked on parameter
-                    efficient
-                    methods for creating low-latency computer use agents using frontier models.
+                    efficient methods for creating low-latency computer use agents using frontier models.
                 </p>
                 <p>
-                    Most recently, I was a Ventures-TECH Winter Fellow at <a href="https://www.harvard.edu/"
-                        target="_blank">Harvard University</a> and a Don Lavoie Fellow at <a
-                        href="https://www.mercatus.org/students/don-lavoie-fellowship" target="_blank">George Mason
-                        University</a>.
-                    I am currently an Associate Scholar at the <a href="https://masason-foundation.org/en/"
-                        target="_blank">Masason Foundation</a> and a Research Assistant at <a
-                        href="https://www.midwestern.edu/" target="_blank">Midwestern University</a>, advised by Prof.
-                    <a href="https://facultyprofiles.midwestern.edu/57-andrew-h-lee" target="_blank">Andrew Lee</a>.
+                    Most recently, I was a Ventures-TECH Winter Fellow at <a href="https://www.harvard.edu/" target="_blank" rel="noopener noreferrer">Harvard University</a> and a Don Lavoie Fellow at <a href="https://www.mercatus.org/students/don-lavoie-fellowship" target="_blank" rel="noopener noreferrer">George Mason University</a>.
+                    I am currently an Associate Scholar at the <a href="https://masason-foundation.org/en/" target="_blank" rel="noopener noreferrer">Masason Foundation</a> and a Research Assistant at <a href="https://www.midwestern.edu/" target="_blank" rel="noopener noreferrer">Midwestern University</a>, advised by Prof.
+                    <a href="https://facultyprofiles.midwestern.edu/57-andrew-h-lee" target="_blank" rel="noopener noreferrer">Andrew Lee</a>.
                 </p>
                 <p>
-                    Feel free to reach out if you are interested in my work!
+                    Feel free to reach out if you are interested in my work.
                 </p>
             </div>
             <img src="pfp.png" alt="Ganesh Talluri" class="profile-img">
@@ -488,8 +467,7 @@
             <h2>Education</h2>
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title"><a href="https://enrollbasis.com/peoria/" target="_blank">BASIS
-                            Peoria</a></span>
+                    <span class="item-title"><a href="https://enrollbasis.com/peoria/" target="_blank" rel="noopener noreferrer">BASIS Peoria</a></span>
                     <span class="item-meta">Aug 2022 – May 2026</span>
                 </div>
                 <span class="item-role">High School Diploma</span>
@@ -497,8 +475,7 @@
                     <li>Cumulative GPA: 4.7/5.0</li>
                     <li>15 APs, 1510 SAT</li>
                     <li>National Merit Scholarship Commended Scholar, AP Scholar with Distinction x2</li>
-                    <li>President of Science Olympiad, Captain of Academic Decathlon, and President of USABO Club
-                    </li>
+                    <li>President of Science Olympiad, Captain of Academic Decathlon, and President of USABO Club</li>
                 </ul>
             </div>
         </section>
@@ -508,148 +485,130 @@
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title"><a href="https://luxenai.org" target="_blank">Luxen LLC (Applied AI
-                            Lab)</a></span>
+                    <span class="item-title"><a href="https://luxenai.org" target="_blank" rel="noopener noreferrer">Luxen LLC (Applied AI Lab)</a></span>
                     <span class="item-meta">Phoenix, AZ | March 2024 – Present</span>
                 </div>
                 <span class="item-role">Co-founder and CEO</span>
                 <ul class="item-details">
                     <li>Founded an applied-AI venture building autonomous agents.</li>
-                    <li>Raised $48K in grant funding and equipment from <a href="https://www.1517fund.com/"
-                            target="_blank">1517
-                            Fund</a>, <a href="https://group.softbank/en" target="_blank">SoftBank</a>, and <a
-                            href="https://www.bizworld.org/" target="_blank">Bizworld</a>.</li>
+                    <li>Raised $48K in grant funding and equipment from <a href="https://www.1517fund.com/" target="_blank" rel="noopener noreferrer">1517 Fund</a>, <a href="https://group.softbank/en" target="_blank" rel="noopener noreferrer">SoftBank</a>, and <a href="https://www.bizworld.org/" target="_blank" rel="noopener noreferrer">BizWorld</a>.</li>
                     <li>Reached 5K+ active users and over 1.5M media views.</li>
                 </ul>
             </div>
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title"><a href="https://www.midwestern.edu/" target="_blank">Midwestern
-                            University</a></span>
+                    <span class="item-title"><a href="https://www.midwestern.edu/" target="_blank" rel="noopener noreferrer">Midwestern University</a></span>
                     <span class="item-meta">Glendale, AZ | Aug 2024 – Present</span>
                 </div>
                 <span class="item-role">Research Assistant</span>
                 <ul class="item-details">
                     <li>Developed 3D segmentation models for bone samples using microCT imaging.</li>
-                    <li>Published in <a
-                            href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527"
-                            target="_blank">Frontiers in Bioinformatics</a>.</li>
-                    <li>Presented poster at <a
-                            href="https://www.anatomy.org/ANATOMY/Meetings-Events/Annual-Meeting--Anatomy-Connected.aspx"
-                            target="_blank">Anatomy Connected 2026</a>.</li>
+                    <li>Published in <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527" target="_blank" rel="noopener noreferrer">Frontiers in Bioinformatics</a>.</li>
+                    <li>Presented poster at <a href="https://www.anatomy.org/ANATOMY/Meetings-Events/Annual-Meeting--Anatomy-Connected.aspx" target="_blank" rel="noopener noreferrer">Anatomy Connected 2026</a>.</li>
                 </ul>
             </div>
         </section>
 
         <section id="publications">
-  <h2>Publications</h2>
+            <h2>Publications</h2>
 
-  <div class="pub-item">
-    <span class="pub-title">New software and 2D models to segment bone in micro-CT scans</span><br>
-    <span class="pub-journal">Frontiers in Bioinformatics</span>. 2025.<br>
-    <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527"
-      target="_blank" style="font-size: 0.9em;">Paper</a>
-  </div>
+            <div class="pub-item">
+                <span class="pub-title">New software and 2D models to segment bone in micro-CT scans</span><br>
+                <span class="pub-journal">Frontiers in Bioinformatics</span>. 2025.<br>
+                <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
+            </div>
 
-  <div class="pub-item">
-    <span class="pub-title">Sculpt: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal
-      Cerebral Cortex Localization</span><br>
-    <span class="pub-journal">medRxiv &amp; SSRN</span>. 2025.<br>
-    <a href="https://doi.org/10.1101/2025.04.01.25324440" target="_blank" style="font-size: 0.9em;">Paper</a>
-  </div>
+            <div class="pub-item">
+                <span class="pub-title">Sculpt: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal Cerebral Cortex Localization</span><br>
+                <span class="pub-journal">medRxiv &amp; SSRN</span>. 2025.<br>
+                <a href="https://doi.org/10.1101/2025.04.01.25324440" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
+            </div>
 
-  <div class="pub-item">
-    <span class="pub-title">Revisiting Generalization Measures Beyond IID: An Empirical Study under Distributional Shift</span><br>
-    <span class="pub-journal">arXiv</span>. 2026.<br>
-    <a href="https://arxiv.org/abs/2602.01718" target="_blank" style="font-size: 0.9em;">Paper</a>
-  </div>
-</section>
-
+            <div class="pub-item">
+                <span class="pub-title">Revisiting Generalization Measures Beyond IID: An Empirical Study under Distributional Shift</span><br>
+                <span class="pub-journal">arXiv</span>. 2026.<br>
+                <a href="https://arxiv.org/abs/2602.01718" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
+            </div>
+        </section>
 
         <section id="awards">
             <h2>Awards, Grants & Fellowships</h2>
             <ul class="clean-list">
                 <li>
-                    <a href="https://masason-foundation.org/en/" target="_blank">Masason Foundation Scholar</a>
+                    <a href="https://masason-foundation.org/en/" target="_blank" rel="noopener noreferrer">Masason Foundation Scholar</a>
                     <span class="meta-bold">[Research Funding]</span>
                     <span class="meta-year">(2025 – Present)</span>
                 </li>
                 <li>
-                    <a href="https://www.mercatus.org/students/don-lavoie-fellowship" target="_blank">Don Lavoie
-                        Fellowship</a>
+                    <a href="https://www.mercatus.org/students/don-lavoie-fellowship" target="_blank" rel="noopener noreferrer">Don Lavoie Fellowship</a>
                     <span class="meta-bold">[Political Economy & Governance]</span>
                     <span class="meta-year">(2025, Fellowship)</span>
                 </li>
                 <li>
-                    <a href="https://www.harvard.edu" target="_blank">Harvard Ventures-TECH Winter Fellowship</a>
+                    <a href="https://www.harvard.edu" target="_blank" rel="noopener noreferrer">Harvard Ventures-TECH Winter Fellowship</a>
                     <span class="meta-bold">[0.5% Acceptance Rate]</span>
                     <span class="meta-year">(2024, Fellowship)</span>
                 </li>
-
                 <li>
-                    <a href="https://www.zfellows.com/" target="_blank">ZFellows Finalist</a>
+                    <a href="https://www.zfellows.com/" target="_blank" rel="noopener noreferrer">ZFellows Finalist</a>
                     <span class="meta-bold">[x2 Finalist]</span>
                     <span class="meta-year">(2024, 2025)</span>
                 </li>
                 <li>
-                    <a href="https://www.1517fund.com/" target="_blank">1517 Fund Medici Grantee</a>
+                    <a href="https://www.1517fund.com/" target="_blank" rel="noopener noreferrer">1517 Fund Medici Grantee</a>
                     <span class="meta-bold">[Research Grant]</span>
                     <span class="meta-year">(2025, Grant)</span>
                 </li>
                 <li>
-                    <a href="https://www.usad.org/" target="_blank">Academic Decathlon National Champion</a>
+                    <a href="https://www.usad.org/" target="_blank" rel="noopener noreferrer">Academic Decathlon National Champion</a>
                     <span class="meta-bold">[Gold Overall, Top 0.1%]</span>
                     <span class="meta-year">(2025, Award)</span>
                 </li>
                 <li>
-                    <a href="https://www.aztechcouncil.org/news/2025-governors-celebration-of-innovation-future-innovators-and-teacher-of-the-year-awardees-announced/"
-                        target="_blank">Future Innovator of the
-                        Year</a>
+                    <a href="https://www.aztechcouncil.org/news/2025-governors-celebration-of-innovation-future-innovators-and-teacher-of-the-year-awardees-announced/" target="_blank" rel="noopener noreferrer">Future Innovator of the Year</a>
                     <span class="meta-bold">[Honorable Mention]</span>
                     <span class="meta-year">(2025)</span>
                 </li>
                 <li>
-                    <a href="https://www.usabo-trc.org/" target="_blank">USA Biology Olympiad</a>
+                    <a href="https://www.usabo-trc.org/" target="_blank" rel="noopener noreferrer">USA Biology Olympiad</a>
                     <span class="meta-bold">[2x Honorable Mention]</span>
                     <span class="meta-year">(2024, 2025)</span>
                 </li>
                 <li>
-                    <a href="https://www.soinc.org/" target="_blank">Science Olympiad National Invitational</a>
+                    <a href="https://www.soinc.org/" target="_blank" rel="noopener noreferrer">Science Olympiad National Invitational</a>
                     <span class="meta-bold">[2nd Place, Microbe Mission]</span>
                     <span class="meta-year">(2025)</span>
                 </li>
                 <li>
-                    <a href="https://bioolympiad.wixsite.com/beckmanhs/copy-of-2024-biology-battle-results"
-                        target="_blank">International Biology Battle</a>
+                    <a href="https://bioolympiad.wixsite.com/beckmanhs/copy-of-2024-biology-battle-results" target="_blank" rel="noopener noreferrer">International Biology Battle</a>
                     <span class="meta-bold">[1st Place Team Worldwide]</span>
                     <span class="meta-year">(2025)</span>
                 </li>
                 <li>
-    <a href="https://ns.com" target="_blank">Network School</a>,
-    <a href="https://www.microsoft.com/en-us/startups" target="_blank">Microsoft for Startups Founders Hub</a>,
-    <a href="https://aws.amazon.com/startups/" target="_blank">AWS for Startups</a>
-    <span class="meta-bold">[Backed Startup]</span>
-    <span class="meta-year">(2024)</span>
-</li>
+                    <a href="https://ns.com" target="_blank" rel="noopener noreferrer">Network School</a>,
+                    <a href="https://www.microsoft.com/en-us/startups" target="_blank" rel="noopener noreferrer">Microsoft for Startups Founders Hub</a>,
+                    <a href="https://aws.amazon.com/startups/" target="_blank" rel="noopener noreferrer">AWS for Startups</a>
+                    <span class="meta-bold">[Backed Startup]</span>
+                    <span class="meta-year">(2024)</span>
+                </li>
                 <li>
-                    <a href="https://www.bizworld.org/" target="_blank">BizWorld YES! Startup Accelerator</a>
+                    <a href="https://www.bizworld.org/" target="_blank" rel="noopener noreferrer">BizWorld YES! Startup Accelerator</a>
                     <span class="meta-bold">[Pre-seed Funding]</span>
                     <span class="meta-year">(2025, Grant)</span>
                 </li>
                 <li>
-                    <a href="https://www.azscience.org/visit/events/arizona-science-engineering-fair-azsef/awards/"
-                        target="_blank">Arizona Science & Engineering Fair (AzSEF)</a>
+                    <a href="https://www.azscience.org/visit/events/arizona-science-engineering-fair-azsef/awards/" target="_blank" rel="noopener noreferrer">Arizona Science & Engineering Fair (AzSEF)</a>
                     <span class="meta-bold">[2nd Place, Comp Bio]</span>
                     <span class="meta-year">(2025)</span>
                 </li>
                 <li>
-                    <a href="https://www.usmdo.org/" target="_blank">US Medical & Disease Olympiad</a>
+                    <a href="https://www.usmdo.org/" target="_blank" rel="noopener noreferrer">US Medical & Disease Olympiad</a>
                     <span class="meta-bold">[Honorable Mention]</span>
                     <span class="meta-year">(2024)</span>
                 </li>
                 <li>
-                    <a href="https://www.azbio.org/" target="_blank">AZ Bioscience Week & Governor's Center</a>
+                    <a href="https://www.azbio.org/" target="_blank" rel="noopener noreferrer">AZ Bioscience Week & Governor's Center</a>
                     <span class="meta-bold">[Invited Research Presenter]</span>
                     <span class="meta-year">(2025)</span>
                 </li>
@@ -681,9 +640,8 @@
         <footer>
             <p>&copy; 2026 Ganesh Talluri. All rights reserved.</p>
         </footer>
-
     </main>
-    <!-- Replace ONLY the <script> block with this (everything else unchanged) -->
+
     <script>
         (function () {
             const root = document.documentElement;
@@ -714,7 +672,6 @@
             });
         })();
     </script>
-
 
 </body>
 
