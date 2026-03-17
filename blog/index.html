@@ -1,1 +1,89 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Ganesh Talluri</title>
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #111111;
+            --muted: #666666;
+            --link: #467cc2;
+        }
+
+        html[data-theme="dark"] {
+            --bg: #0b0f14;
+            --text: #e5e7eb;
+            --muted: #94a3b8;
+            --link: #7cb6ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro {
+            color: var(--muted);
+            margin-bottom: 3rem;
+        }
+
+        .post {
+            margin-bottom: 2.5rem;
+        }
+
+        .post-title {
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="/" class="back">← home</a>
+
+<h1>Blog</h1>
+
+<p class="intro">
+I break down recent AI papers and explain them simply, focusing on intuition, diagrams, and clear reasoning.
+</p>
+
+<div class="post">
+    <div class="post-title">
+        <a href="https://github.com/MoonshotAI/Attention-Residuals" target="_blank">
+            Technical Report of Attention Residuals — Kimi Taom
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
