@@ -45,8 +45,21 @@
             margin-bottom: 2rem;
         }
 
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
         .paper-title {
             font-weight: 600;
+        }
+
+        .paper-date {
+            color: var(--muted);
+            font-size: 0.85rem;
+            white-space: nowrap;
         }
 
         .paper-note {
@@ -83,10 +96,13 @@ A running list of papers and books I’ve found interesting. Occasionally annota
 </p>
 
 <div class="paper">
-    <div class="paper-title">
-        <a href="https://github.com/MoonshotAI/Attention-Residuals" target="_blank">
-            Technical Report of Attention Residuals — Kimi Taom
-        </a>
+    <div class="paper-header">
+        <div class="paper-title">
+            <a href="https://github.com/MoonshotAI/Attention-Residuals" target="_blank">
+                Technical Report of Attention Residuals — Kimi Taom
+            </a>
+        </div>
+        <div class="paper-date">Mar 2026</div>
     </div>
     <div class="paper-note">
         Exploring how attention residuals influence model behavior and internal representations.
