@@ -12,6 +12,9 @@
     <link rel="icon" sizes="32x32" href="pfp1.png">
     <link rel="icon" sizes="192x192" href="pfp1.png">
 
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
 
@@ -50,7 +53,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.7;
@@ -104,6 +107,7 @@
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 1rem;
+            font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         .status-dot {
@@ -137,6 +141,7 @@
             background: var(--bg-color);
             z-index: 100;
             transition: background-color 0.2s, border-color 0.2s;
+            font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         nav ul {
@@ -182,16 +187,20 @@
         }
 
         h1 {
-            font-family: "Georgia", "Times New Roman", serif;
+            font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
             color: var(--accent-color);
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         h2 {
-            font-family: "Georgia", "Times New Roman", serif;
+            font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             margin-top: 4rem;
             margin-bottom: 1.5rem;
             color: var(--text-main);
@@ -238,11 +247,11 @@
 
         ul.clean-list a {
             color: var(--link-blue);
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .meta-bold {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-main);
         }
 
@@ -257,7 +266,7 @@
         }
 
         .pub-title {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-main);
         }
 
@@ -273,6 +282,8 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.3rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .item-title {
@@ -323,7 +334,7 @@
             letter-spacing: 0.08em;
             color: var(--text-muted);
             margin-bottom: 0.6rem;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .skill-list {
@@ -340,6 +351,7 @@
             color: var(--text-muted);
             text-align: center;
             transition: border-color 0.2s;
+            font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         @media (max-width: 900px) {
@@ -440,10 +452,10 @@
                 </div>
                 <h1>Ganesh Talluri</h1>
                 <p style="margin-top: -0.6rem; margin-bottom: 1.6rem;">
-    <a href="/about" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[about me]</a>
-    &nbsp;&nbsp;
-    <a href="/bookshelf" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[bookshelf]</a>
-</p>
+                    <a href="/about" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[about me]</a>
+                    &nbsp;&nbsp;
+                    <a href="/bookshelf" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[bookshelf]</a>
+                </p>
                 <p>
                     Hi! I'm Ganesh Talluri, a student at <a href="https://enrollbasis.com/peoria/" target="_blank" rel="noopener noreferrer">BASIS Peoria</a> based in <a href="https://www.phoenix.gov" target="_blank" rel="noopener noreferrer">Phoenix, AZ</a>.
                     I am the co-founder of <a href="https://luxenai.org" target="_blank" rel="noopener noreferrer">Luxen LLC</a> and a machine
@@ -453,7 +465,7 @@
                     My work spans AI agents, biomedical machine learning, and computational biology. I am
                     working on building trustworthy AI systems and applying deep learning to solve complex
                     biological problems. I have also worked on fine-tuning deep learning models for out-of-distribution
-                    tasks, created custom biological transformer models and modeled neuronal stimulation through gene expression. 
+                    tasks, created custom biological transformer models and modeled neuronal stimulation through gene expression.
                 </p>
                 <p>
                     Most recently, I was a Research Assistant at <a href="https://www.midwestern.edu/" target="_blank" rel="noopener noreferrer">Midwestern University</a>, advised by Prof.
@@ -522,17 +534,18 @@
                 <span class="pub-journal">Frontiers in Bioinformatics</span>. 2026.<br>
                 <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
             </div>
+
             <div class="pub-item">
-    <span class="pub-title">Glyde: A Domain-Aware, Topology-Biased Glycan
-Language Model for Viral Receptor Binding</span><br>
-    <span class="pub-journal">arXiv</span>. 2026.<br>
-<a href="https://ganeshtalluri.com/glyde/" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>  
-</div>
+                <span class="pub-title">Glyde: A Domain-Aware, Topology-Biased Glycan Language Model for Viral Receptor Binding</span><br>
+                <span class="pub-journal">arXiv</span>. 2026.<br>
+                <a href="https://ganeshtalluri.com/glyde/" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
+            </div>
+
             <div class="pub-item">
-    <span class="pub-title">Sculpt: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal Cerebral Cortex Localization</span><br>
-    <span class="pub-journal">medRxiv &amp; SSRN</span>. 2025.<br>
-    <a href="https://doi.org/10.1101/2025.04.01.25324440" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
-</div>
+                <span class="pub-title">Sculpt: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal Cerebral Cortex Localization</span><br>
+                <span class="pub-journal">medRxiv &amp; SSRN</span>. 2025.<br>
+                <a href="https://doi.org/10.1101/2025.04.01.25324440" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
+            </div>
 
             <div class="pub-item">
                 <span class="pub-title">Revisiting Generalization Measures Beyond IID: An Empirical Study under Distributional Shift</span><br>
