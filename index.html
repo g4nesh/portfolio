@@ -31,6 +31,7 @@
             --border-color: #f0f0f0;
             --section-border: #eee;
             --shadow-color: rgba(0, 0, 0, 0.08);
+            --card-bg: #fafafa;
         }
 
         html[data-theme="dark"] {
@@ -44,6 +45,7 @@
             --border-color: #1f2937;
             --section-border: #1f2937;
             --shadow-color: rgba(0, 0, 0, 0.35);
+            --card-bg: #111827;
         }
 
         * {
@@ -310,6 +312,53 @@
             margin-bottom: 0.3rem;
         }
 
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.25rem 1.25rem 1.1rem;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: transform 0.15s ease, border-color 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--section-border);
+        }
+
+        .project-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.45rem;
+        }
+
+        .project-description {
+            font-size: 0.96rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.85rem;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        .projects-more {
+            margin-top: 1rem;
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -397,6 +446,11 @@
                 top: 1rem;
                 right: 1rem;
             }
+
+            .item-header {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
         }
     </style>
 </head>
@@ -413,6 +467,7 @@
             <li><a href="#education">Education</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#publications">Publications</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#awards">Awards</a></li>
             <li><a href="#skills">Skills</a></li>
         </ul>
@@ -445,10 +500,10 @@
                 </div>
                 <h1>Ganesh Talluri</h1>
                 <p style="margin-top: -0.6rem; margin-bottom: 1.6rem;">
-    <a href="/about" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[about me]</a>
-    &nbsp;&nbsp;
-    <a href="/bookshelf" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[bookshelf]</a>
-</p>
+                    <a href="/about" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[about me]</a>
+                    &nbsp;&nbsp;
+                    <a href="/bookshelf" style="color: var(--link-blue); font-size: 0.95rem; font-weight: 500;">[bookshelf]</a>
+                </p>
                 <p>
                     Hi! I'm Ganesh Talluri, a student at <a href="https://enrollbasis.com/peoria/" target="_blank" rel="noopener noreferrer">BASIS Peoria</a> based in <a href="https://www.phoenix.gov" target="_blank" rel="noopener noreferrer">Phoenix, AZ</a>.
                     I am the co-founder of <a href="https://luxenai.org" target="_blank" rel="noopener noreferrer">Luxen LLC</a> and a machine
@@ -458,7 +513,7 @@
                     My work spans AI agents, biomedical machine learning, and computational biology. I am
                     working on building trustworthy AI systems and applying deep learning to solve complex
                     biological problems. I have also worked on fine-tuning deep learning models for out-of-distribution
-                    tasks, created custom biological transformer models and modeled neuronal stimulation through gene expression. 
+                    tasks, created custom biological transformer models and modeled neuronal stimulation through gene expression.
                 </p>
                 <p>
                     Most recently, I was a Research Assistant at <a href="https://www.midwestern.edu/" target="_blank" rel="noopener noreferrer">Midwestern University</a>, advised by Prof.
@@ -528,22 +583,52 @@
                 <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
             </div>
             <div class="pub-item">
-    <span class="pub-title">Glyde: A Domain-Aware, Topology-Biased Glycan
+                <span class="pub-title">Glyde: A Domain-Aware, Topology-Biased Glycan
 Language Model for Viral Receptor Binding</span><br>
-    <span class="pub-journal">arXiv</span>. 2026.<br>
-<a href="https://ganeshtalluri.com/glyde/" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>  
-</div>
+                <span class="pub-journal">arXiv</span>. 2026.<br>
+                <a href="https://ganeshtalluri.com/glyde/" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
+            </div>
             <div class="pub-item">
-    <span class="pub-title">Sculpt: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal Cerebral Cortex Localization</span><br>
-    <span class="pub-journal">medRxiv &amp; SSRN</span>. 2025.<br>
-    <a href="https://doi.org/10.1101/2025.04.01.25324440" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
-</div>
+                <span class="pub-title">Sculpt: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal Cerebral Cortex Localization</span><br>
+                <span class="pub-journal">medRxiv &amp; SSRN</span>. 2025.<br>
+                <a href="https://doi.org/10.1101/2025.04.01.25324440" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
+            </div>
 
             <div class="pub-item">
                 <span class="pub-title">Revisiting Generalization Measures Beyond IID: An Empirical Study under Distributional Shift</span><br>
                 <span class="pub-journal">arXiv</span>. 2026.<br>
                 <a href="https://arxiv.org/abs/2602.01718" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
             </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-title">Agent Tree</div>
+                    <p class="project-description">
+                        A framework for structuring, visualizing, and orchestrating agent behavior in a more interpretable tree-based form.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/LuxenAI/agent-tree" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-title">Interactive Transformer</div>
+                    <p class="project-description">
+                        An interactive visualization project for understanding transformer internals, attention behavior, and model structure more intuitively.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/g4nesh/interactive-transformer" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </article>
+            </div>
+
+            <p class="projects-more">
+                More projects on <a href="https://github.com/g4nesh" target="_blank" rel="noopener noreferrer">my GitHub</a>.
+            </p>
         </section>
 
         <section id="awards">
@@ -599,7 +684,7 @@ Language Model for Viral Receptor Binding</span><br>
                     <span class="meta-bold">[2x 2nd Place, Comp Bio]</span>
                     <span class="meta-year">(2025, 2026)</span>
                 </li>
-        
+
                 <li>
                     <a href="https://bioolympiad.wixsite.com/beckmanhs/copy-of-2024-biology-battle-results" target="_blank" rel="noopener noreferrer">International Biology Battle</a>
                     <span class="meta-bold">[1st Place Team Worldwide]</span>
@@ -625,47 +710,54 @@ Language Model for Viral Receptor Binding</span><br>
             </ul>
         </section>
 
-       <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
 
-        <div class="skill-category">
-            <span class="skill-category-title">Programming & Systems</span>
-            <span class="skill-list">
-                Python, Java, JavaScript, HTML/CSS
-            </span>
-        </div>
+                <div class="skill-category">
+                    <span class="skill-category-title">Programming & Systems</span>
+                    <span class="skill-list">
+                        Python, C++, CUDA, Distributed Systems (MPI, NCCL), Parallel Computing (OpenMP)
+                    </span>
+                </div>
 
-        <div class="skill-category">
-            <span class="skill-category-title">ML & Training Infrastructure</span>
-            <span class="skill-list">
-                PyTorch, Transformer Architectures, LLM Training,
-                FSDP/ZeRO
-            </span>
-        </div>
+                <div class="skill-category">
+                    <span class="skill-category-title">ML & Training Infrastructure</span>
+                    <span class="skill-list">
+                        PyTorch, Transformer Architectures, LLM Training,
+                        FSDP/ZeRO, DeepSpeed, TorchTitan, HuggingFace
+                    </span>
+                </div>
 
-        <div class="skill-category">
-            <span class="skill-category-title">Optimization & Theory</span>
-            <span class="skill-list">
-                Optimizer Effeciency,
-                Numerical Linear Algebra, Communication Bottlenecks
-                Generalization under Distribution Shift,
-                Probability & Statistics for Machine Learning
-            </span>
-        </div>
+                <div class="skill-category">
+                    <span class="skill-category-title">Optimization & Theory</span>
+                    <span class="skill-list">
+                        Optimization (first- and second-order methods, adaptive optimizers),
+                        Numerical Linear Algebra (Krylov methods, Rayleigh–Ritz),
+                        Generalization under Distribution Shift,
+                        Probability & Statistics for Machine Learning
+                    </span>
+                </div>
 
+                <div class="skill-category">
+                    <span class="skill-category-title">Tools & Infrastructure</span>
+                    <span class="skill-list">
+                        Git, Slurm, Weights & Biases, Docker,
+                        Cloud Compute (AWS, GCP, Azure)
+                    </span>
+                </div>
 
-        <div class="skill-category">
-            <span class="skill-category-title">Applied ML & Bio</span>
-            <span class="skill-list">
-                Biomedical Imaging (microCT),
-                Segmentation Models (U-Net, DeepLab, SegFormer),
-                Computational Biology, Biological Sequence Modeling
-            </span>
-        </div>
+                <div class="skill-category">
+                    <span class="skill-category-title">Applied ML & Bio</span>
+                    <span class="skill-list">
+                        Biomedical Imaging (microCT),
+                        Segmentation Models (U-Net, DeepLab, SegFormer),
+                        Computational Biology, Biological Sequence Modeling
+                    </span>
+                </div>
 
-    </div>
-</section>
+            </div>
+        </section>
 
         <footer>
             <p>&copy; 2026 Ganesh Talluri. All rights reserved.</p>
