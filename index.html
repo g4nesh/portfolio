@@ -8,7 +8,6 @@
     <meta name="color-scheme" content="light dark">
     <link rel="icon" href="pfp1.png" type="image/png">
     <link rel="apple-touch-icon" href="pfp1.png">
-
     <link rel="icon" sizes="32x32" href="pfp1.png">
     <link rel="icon" sizes="192x192" href="pfp1.png">
 
@@ -29,7 +28,7 @@
             --accent-color: #000000;
             --sidebar-width: 280px;
             --border-color: #f0f0f0;
-            --section-border: #eee;
+            --section-border: #eeeeee;
             --shadow-color: rgba(0, 0, 0, 0.08);
             --card-bg: #fafafa;
         }
@@ -52,6 +51,10 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -120,13 +123,8 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         nav {
@@ -232,46 +230,6 @@
             box-shadow: 0 4px 15px var(--shadow-color);
         }
 
-        ul.clean-list {
-            list-style-type: disc;
-            margin-left: 1.2rem;
-            color: var(--text-secondary);
-        }
-
-        ul.clean-list li {
-            margin-bottom: 0.8rem;
-            padding-left: 0.5rem;
-        }
-
-        ul.clean-list a {
-            color: var(--link-blue);
-            font-weight: 400;
-        }
-
-        .meta-bold {
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .meta-year {
-            color: var(--text-muted);
-        }
-
-        .pub-item {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .pub-title {
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .pub-journal {
-            font-style: italic;
-        }
-
         .item {
             margin-bottom: 2.5rem;
         }
@@ -279,19 +237,46 @@
         .item-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.3rem;
+            align-items: flex-start;
+            gap: 1.25rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .item-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            min-width: 0;
+        }
+
+        .item-logo {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+            border-radius: 8px;
+            flex-shrink: 0;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 4px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        html[data-theme="dark"] .item-logo {
+            background: #ffffff;
         }
 
         .item-title {
             font-weight: 700;
             color: var(--text-main);
             font-size: 1.1rem;
+            line-height: 1.3;
         }
 
         .item-meta {
             color: var(--text-muted);
             font-style: italic;
             font-size: 0.95rem;
+            white-space: nowrap;
         }
 
         .item-role {
@@ -309,7 +294,22 @@
         }
 
         .item-details li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .pub-item {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .pub-journal {
+            font-style: italic;
         }
 
         .projects-grid {
@@ -359,9 +359,34 @@
             color: var(--text-secondary);
         }
 
+        ul.clean-list {
+            list-style-type: disc;
+            margin-left: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        ul.clean-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+        }
+
+        ul.clean-list a {
+            color: var(--link-blue);
+            font-weight: 400;
+        }
+
+        .meta-bold {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .meta-year {
+            color: var(--text-muted);
+        }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
             margin-top: 1.5rem;
         }
@@ -449,7 +474,12 @@
 
             .item-header {
                 flex-direction: column;
-                gap: 0.2rem;
+                align-items: flex-start;
+                gap: 0.35rem;
+            }
+
+            .item-meta {
+                white-space: normal;
             }
         }
     </style>
@@ -531,7 +561,12 @@
             <h2>Education</h2>
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title"><a href="https://enrollbasis.com/peoria/" target="_blank" rel="noopener noreferrer">BASIS Peoria</a></span>
+                    <div class="item-header-left">
+                        <img src="basis.png" alt="BASIS Peoria logo" class="item-logo">
+                        <span class="item-title">
+                            <a href="https://enrollbasis.com/peoria/" target="_blank" rel="noopener noreferrer">BASIS Peoria</a>
+                        </span>
+                    </div>
                     <span class="item-meta">Aug 2022 – May 2026</span>
                 </div>
                 <span class="item-role">High School Diploma</span>
@@ -549,7 +584,12 @@
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title"><a href="https://luxenai.org" target="_blank" rel="noopener noreferrer">Luxen LLC (Applied AI Lab)</a></span>
+                    <div class="item-header-left">
+                        <img src="logoluxen copy.jpg" alt="Luxen logo" class="item-logo">
+                        <span class="item-title">
+                            <a href="https://luxenai.org" target="_blank" rel="noopener noreferrer">Luxen LLC (Applied AI Lab)</a>
+                        </span>
+                    </div>
                     <span class="item-meta">Phoenix, AZ | March 2024 – Present</span>
                 </div>
                 <span class="item-role">Co-founder and CEO</span>
@@ -562,7 +602,12 @@
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title"><a href="https://www.midwestern.edu/" target="_blank" rel="noopener noreferrer">Midwestern University</a></span>
+                    <div class="item-header-left">
+                        <img src="midu.svg" alt="Midwestern University logo" class="item-logo">
+                        <span class="item-title">
+                            <a href="https://www.midwestern.edu/" target="_blank" rel="noopener noreferrer">Midwestern University</a>
+                        </span>
+                    </div>
                     <span class="item-meta">Glendale, AZ | Aug 2024 – March 2026</span>
                 </div>
                 <span class="item-role">Research Assistant</span>
@@ -582,12 +627,13 @@
                 <span class="pub-journal">Frontiers in Bioinformatics</span>. 2026.<br>
                 <a href="https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1677527" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
             </div>
+
             <div class="pub-item">
-                <span class="pub-title">Glyde: A Domain-Aware, Topology-Biased Glycan
-Language Model for Viral Receptor Binding</span><br>
+                <span class="pub-title">Glyde: A Domain-Aware, Topology-Biased Glycan Language Model for Viral Receptor Binding</span><br>
                 <span class="pub-journal">arXiv</span>. 2026.<br>
                 <a href="https://ganeshtalluri.com/glyde/" target="_blank" rel="noopener noreferrer" style="font-size: 0.9em;">Paper</a>
             </div>
+
             <div class="pub-item">
                 <span class="pub-title">Sculpt: A Novel Multi-Omics Deep Learning Framework for Spatiotemporal Cerebral Cortex Localization</span><br>
                 <span class="pub-journal">medRxiv &amp; SSRN</span>. 2025.<br>
@@ -684,7 +730,6 @@ Language Model for Viral Receptor Binding</span><br>
                     <span class="meta-bold">[2x 2nd Place, Comp Bio]</span>
                     <span class="meta-year">(2025, 2026)</span>
                 </li>
-
                 <li>
                     <a href="https://bioolympiad.wixsite.com/beckmanhs/copy-of-2024-biology-battle-results" target="_blank" rel="noopener noreferrer">International Biology Battle</a>
                     <span class="meta-bold">[1st Place Team Worldwide]</span>
@@ -717,33 +762,35 @@ Language Model for Viral Receptor Binding</span><br>
                 <div class="skill-category">
                     <span class="skill-category-title">Programming & Systems</span>
                     <span class="skill-list">
-                        Python, Java, JavaScript, HTML/CSS, CUDA
+                        Python, C++, CUDA, Distributed Systems (MPI, NCCL), Parallel Computing (OpenMP)
                     </span>
                 </div>
 
                 <div class="skill-category">
                     <span class="skill-category-title">ML & Training Infrastructure</span>
                     <span class="skill-list">
-                        PyTorch, Transformer Architectures, LLM Training,
-                        FSDP/ZeRO, HuggingFace
+                        PyTorch, Transformer Architectures, LLM Training, FSDP/ZeRO, DeepSpeed, TorchTitan, HuggingFace
                     </span>
                 </div>
 
                 <div class="skill-category">
                     <span class="skill-category-title">Optimization & Theory</span>
                     <span class="skill-list">
-                        Optimizer Effeciency, Communication Bottlenecks
-                        MLP & Attention Mechanisms, Numerical Linear Algebra,
-                        Probability & Statistics for Machine Learning
+                        Optimization (first- and second-order methods, adaptive optimizers), Numerical Linear Algebra (Krylov methods, Rayleigh–Ritz), Generalization under Distribution Shift, Probability & Statistics for Machine Learning
+                    </span>
+                </div>
+
+                <div class="skill-category">
+                    <span class="skill-category-title">Tools & Infrastructure</span>
+                    <span class="skill-list">
+                        Git, Slurm, Weights & Biases, Docker, Cloud Compute (AWS, GCP, Azure)
                     </span>
                 </div>
 
                 <div class="skill-category">
                     <span class="skill-category-title">Applied ML & Bio</span>
                     <span class="skill-list">
-                        Biomedical Imaging (microCT),
-                        Segmentation Models (U-Net, DeepLab, SegFormer),
-                        Computational Biology, Biological Sequence Modeling
+                        Biomedical Imaging (microCT), Segmentation Models (U-Net, DeepLab, SegFormer), Computational Biology, Biological Sequence Modeling
                     </span>
                 </div>
 
