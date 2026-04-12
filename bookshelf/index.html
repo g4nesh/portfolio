@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papers/Books — Ganesh Talluri</title>
 
-    <!-- Satoshi font -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap">
 
@@ -87,6 +86,18 @@
             margin-bottom: 2rem;
             font-size: 0.9rem;
         }
+
+        @media (max-width: 640px) {
+            .paper-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .paper-date {
+                white-space: normal;
+            }
+        }
     </style>
 </head>
 
@@ -103,7 +114,7 @@ A running list of papers and books I’ve found interesting. Occasionally annota
 <div class="paper">
     <div class="paper-header">
         <div class="paper-title">
-            <a href="https://en.wikipedia.org/wiki/Life_3.0" target="_blank">
+            <a href="https://en.wikipedia.org/wiki/Life_3.0" target="_blank" rel="noopener noreferrer">
                 Life 3.0 — Max Tegmark
             </a>
         </div>
@@ -117,8 +128,8 @@ A running list of papers and books I’ve found interesting. Occasionally annota
 <div class="paper">
     <div class="paper-header">
         <div class="paper-title">
-            <a href="https://github.com/MoonshotAI/Attention-Residuals" target="_blank">
-                Technical Report of Attention Residuals — Kimi 
+            <a href="https://github.com/MoonshotAI/Attention-Residuals" target="_blank" rel="noopener noreferrer">
+                Technical Report of Attention Residuals — Kimi
             </a>
         </div>
         <div class="paper-date">Mar 15, 2026</div>
@@ -131,7 +142,7 @@ A running list of papers and books I’ve found interesting. Occasionally annota
 <div class="paper">
     <div class="paper-header">
         <div class="paper-title">
-            <a href="https://arxiv.org/abs/2402.17192" target="_blank">
+            <a href="https://arxiv.org/abs/2402.17192" target="_blank" rel="noopener noreferrer">
                 TurboQuant — Fast and Accurate Post-Training Quantization
             </a>
         </div>
@@ -139,6 +150,20 @@ A running list of papers and books I’ve found interesting. Occasionally annota
     </div>
     <div class="paper-note">
         Post-training quantization method that preserves accuracy while enabling faster and more efficient inference, especially for large language models.
+    </div>
+</div>
+
+<div class="paper">
+    <div class="paper-header">
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2603.09078" target="_blank" rel="noopener noreferrer">
+                Exclusive Self Attention
+            </a>
+        </div>
+        <div class="paper-date">Apr 12, 2026</div>
+    </div>
+    <div class="paper-note">
+        A simple modification to self-attention that excludes information from a token’s own value vector, encouraging stronger context modeling and improved long-sequence language modeling.
     </div>
 </div>
 
